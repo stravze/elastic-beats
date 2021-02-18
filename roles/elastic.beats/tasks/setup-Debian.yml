@@ -17,6 +17,7 @@
         Echo "Downloading FileBeats"
         sudo curl https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-oss-7.10.2-amd64.deb --output /tmp/filebeat-oss-7.10.2-amd64.deb
         sudo apt install /tmp/filebeat-oss-7.10.2-amd64.deb
+        sudo filebeat setup -e
         sudo systemctl enable filebeat
         
     - name: filebeat template
@@ -30,6 +31,7 @@
         Echo "Downloading AuditBeats"
         sudo curl https://artifacts.elastic.co/downloads/beats/auditbeat/auditbeat-oss-7.10.2-amd64.deb --output /tmp/auditbeat-oss-7.10.2-amd64.deb
         sudo apt install /tmp/auditbeat-oss-7.10.2-amd64.deb
+        sudo auditbeat setup -e
         sudo systemctl enable auditbeat
         
     - name: auditbeat template
