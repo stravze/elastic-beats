@@ -80,6 +80,16 @@ auditbeat.modules:
   login.wtmp_file_pattern: /var/log/wtmp*
   login.btmp_file_pattern: /var/log/btmp*
 
+
+- module: auditd
+  resolve_ids: true
+  failure_mode: silent
+  backlog_limit: 8192
+  rate_limit: 0
+  include_raw_message: false
+  include_warnings: false
+  backpressure_strategy: auto
+
 # ======================= Elasticsearch template setting =======================
 setup.template.settings:
   index.number_of_shards: 1
