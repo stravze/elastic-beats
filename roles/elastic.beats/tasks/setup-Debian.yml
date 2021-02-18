@@ -12,7 +12,7 @@
         id: 46095ACC8548582C1A2699A9D27D666CD88E42B4
         state: present
     
-    - name: Beat Agent install
+    - name: Filebeat Agent install
       shell: |
         Echo "Downloading FileBeats"
         sudo curl https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-oss-7.11.1-amd64.deb --output /tmp/filebeat-oss-7.11.1-amd64.deb
@@ -23,3 +23,15 @@
         src: filebeat.yml.j2
         dest: /etc/filebeat/filebeat.yml
       notify: restart filebeat
+
+    - name: Auditbeat Agent install
+      shell: |
+        Echo "Downloading AuditBeats"
+        sudo curl https://artifacts.elastic.co/downloads/beats/auditbeat/aduitbeat-oss-7.11.1-amd64.deb --output /tmp/auditbeat-oss-7.11.1-amd64.deb
+        sudo apt install /tmp/auditbeat-oss-7.11.1-amd64.deb
+        
+    - name: auditbeat template
+      template:
+        src: auditbeat.yml.j2
+        dest: /etc/auditbeat/auditbeat.yml
+      notify: restart auditbeat

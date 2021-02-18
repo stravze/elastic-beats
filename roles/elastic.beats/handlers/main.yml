@@ -5,3 +5,11 @@
     state: restarted
     enabled: true
   when: start_service and restart_on_change
+
+- name: restart the service
+  become: yes
+  service:
+    name: auditbeat
+    state: restarted
+    enabled: true
+  when: start_service and restart_on_change
