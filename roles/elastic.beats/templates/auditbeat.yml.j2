@@ -56,7 +56,7 @@ auditbeat.modules:
   datasets:
     - package # Installed, updated, and removed packages
 
-  period: 2m # The frequency at which the datasets check for changes
+  period: 1m # The frequency at which the datasets check for changes
 
 - module: system
   datasets:
@@ -194,7 +194,7 @@ processors:
 
 # Sets log level. The default log level is info.
 # Available log levels are: error, warning, info, debug
-#logging.level: debug
+logging.level: debug
 
 # At debug level, you can selectively enable logging only for some components.
 # To enable all selectors use ["*"]. Examples of other selectors are "beat",
