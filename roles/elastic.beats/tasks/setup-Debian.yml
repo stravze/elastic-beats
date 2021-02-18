@@ -27,7 +27,7 @@
     - name: Auditbeat Agent install
       shell: |
         Echo "Downloading AuditBeats"
-        sudo curl https://artifacts.elastic.co/downloads/beats/auditbeat/aduitbeat-oss-7.11.1-amd64.deb --output /tmp/auditbeat-oss-7.11.1-amd64.deb
+        sudo curl https://artifacts.elastic.co/downloads/beats/auditbeat/auditbeat-oss-7.11.1-amd64.deb --output /tmp/auditbeat-oss-7.11.1-amd64.deb
         sudo apt install /tmp/auditbeat-oss-7.11.1-amd64.deb
         
     - name: auditbeat template
