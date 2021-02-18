@@ -12,8 +12,14 @@
         id: 46095ACC8548582C1A2699A9D27D666CD88E42B4
         state: present
     
-    - name: Add Filebeat repository.
-      apt_repository:
-        repo: 'deb https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-oss-7.11.1-amd64.deb/apt stable main'
-        state: present
-        update_cache: true
+    - name: Beat Agent install
+      shell: |
+        Echo "Downloading FileBeats"
+        curl https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-oss-7.11.1-amd64.deb --output filebeat-oss-7.11.1-amd64.deb
+        sudo apt install filebeat-oss-7.11.1-amd64.deb
+        
+    - name: filebeat template
+      template:
+        src: filebeat.j2
+        dest: /etc/filebeat/filebeat.yml
+        
