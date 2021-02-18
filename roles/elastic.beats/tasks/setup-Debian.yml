@@ -15,11 +15,10 @@
     - name: Beat Agent install
       shell: |
         Echo "Downloading FileBeats"
-        curl https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-oss-7.11.1-amd64.deb --output filebeat-oss-7.11.1-amd64.deb
-        sudo apt install filebeat-oss-7.11.1-amd64.deb
+        sudo curl https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-oss-7.11.1-amd64.deb --output /tmp/filebeat-oss-7.11.1-amd64.deb
+        sudo apt install /tmp/filebeat-oss-7.11.1-amd64.deb
         
     - name: filebeat template
       template:
         src: filebeat.j2
         dest: /etc/filebeat/filebeat.yml
-        
