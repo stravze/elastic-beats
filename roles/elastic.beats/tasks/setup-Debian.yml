@@ -39,3 +39,18 @@
         src: auditbeat.yml.j2
         dest: /etc/auditbeat/auditbeat.yml
       notify: restart auditbeat
+
+
+    - name: Ensure Filebeat is started and enabled at boot.
+      become: yes
+      service:
+        name: filebeat
+        state: started
+        enabled: true
+
+    - name: Ensure Auditbeat is started and enabled at boot.
+      become: yes
+      service:
+        name: auditbeat
+        state: started
+        enabled: true
