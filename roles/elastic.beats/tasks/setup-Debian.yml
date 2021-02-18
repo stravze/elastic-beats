@@ -20,6 +20,6 @@
         
     - name: filebeat template
       template:
-        src: filebeat.yamj2
+        src: filebeat.yam.j2
         dest: /etc/filebeat/filebeat.yml
       notify: restart filebeat
