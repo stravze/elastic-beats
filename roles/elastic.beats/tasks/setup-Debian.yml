@@ -18,7 +18,8 @@
         sudo curl https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-oss-7.11.1-amd64.deb --output /tmp/filebeat-oss-7.11.1-amd64.deb
         sudo apt install /tmp/filebeat-oss-7.11.1-amd64.deb
         
-    # - name: filebeat template
-    #   template:
-    #     src: filebeat.yamj2
-    #     dest: /etc/filebeat/filebeat.yml
+    - name: filebeat template
+      template:
+        src: filebeat.yamj2
+        dest: /etc/filebeat/filebeat.yml
+      notify: restart filebeat
