@@ -1,0 +1,28 @@
+{ 
+    "query": {
+        "bool": {
+            "must": [
+                {
+                    "match": { 
+                        "audit_category": {
+                            "query": "FAILED_LOGIN"
+                        }
+                    }
+                },
+                {
+                    "range" : {
+                        "audit_utc_timestamp" : {
+                            "gte" : "now-5m"
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    "sort": [{ 
+        "audit_utc_timestamp" : {
+            "order" : "desc"
+        }
+    }]
+}
+JSON
